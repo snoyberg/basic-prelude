@@ -23,3 +23,7 @@ library
                      , unordered-containers
                      , vector
                      , system-filepath          >= 0.4     && < 0.5
+
+source-repository head
+  type:     git
+  location: git://github.com/snoyberg/basic-prelude.git
