@@ -3,10 +3,6 @@ module BasicPrelude
     ( -- * Standard
       -- ** Operators
       (Prelude.$)
-    , (Prelude.+)
-    , (Prelude.-)
-    , (Prelude.*)
-    , (Prelude./)
     , (Prelude.&&)
     , (Prelude.||)
     , (Control.Category..)
@@ -38,6 +34,14 @@ module BasicPrelude
     , Prelude.Functor (..)
     , Prelude.Monad (..)
     , (Control.Monad.=<<)
+      -- ** Numeric type classes
+    , Prelude.Num (..)
+    , Prelude.Real (..)
+    , Prelude.Integral (..)
+    , Prelude.Fractional (..)
+    , Prelude.Floating (..)
+    , Prelude.RealFrac (..)
+    , Prelude.RealFloat(..)
       -- ** Data types
     , Prelude.Maybe (..)
     , Prelude.Ordering (..)
@@ -45,7 +49,6 @@ module BasicPrelude
     , Prelude.Char
     , Prelude.IO
     , Prelude.Either (..)
-    , Prelude.Integral (..)
       -- * Re-exports
       -- ** Packed reps
     , ByteString
@@ -60,11 +63,21 @@ module BasicPrelude
     , Vector
     , Hashable
       -- ** Numbers
+    , Word
     , Word8
     , Word64
-    , Int64
     , Prelude.Int
-    , Word
+    , Int64
+    , Prelude.Integer
+    , Prelude.Rational
+    , Prelude.Float
+    , Prelude.Double
+      -- ** Numeric functions
+    , (Prelude.^)
+    , (Prelude.^^)
+    , Prelude.subtract
+    , Prelude.fromIntegral
+    , Prelude.realToFrac
       -- ** Monoids
     , Monoid (..)
     , concat
