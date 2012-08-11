@@ -80,6 +80,7 @@ module BasicPrelude
     , Prelude.realToFrac
       -- ** Monoids
     , Monoid (..)
+    , empty
     , concat
     , (++)
       -- ** Arrow
@@ -154,6 +155,9 @@ import Data.HashSet (HashSet)
 
 type LText = Data.Text.Lazy.Text
 type LByteString = Data.ByteString.Lazy.ByteString
+
+empty :: Monoid w => w
+empty = mempty
 
 concat :: Monoid w => [w] -> w
 concat = mconcat
