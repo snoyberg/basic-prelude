@@ -65,8 +65,10 @@ module BasicPrelude
       -- ** Numbers
     , Word
     , Word8
+    , Word32
     , Word64
     , Prelude.Int
+    , Int32
     , Int64
     , Prelude.Integer
     , Prelude.Rational
@@ -132,8 +134,8 @@ import qualified Control.Exception
 
 import qualified Filesystem.Path.CurrentOS as F
 
-import Data.Word (Word8, Word64, Word)
-import Data.Int (Int64)
+import Data.Word (Word8, Word32, Word64, Word)
+import Data.Int (Int32, Int64)
 
 import qualified Data.Text.IO
 
