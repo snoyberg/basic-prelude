@@ -61,6 +61,8 @@ module BasicPrelude
     , Set
     , HashSet
     , Vector
+    , UVector
+    , Unbox
     , Hashable
       -- ** Numbers
     , Word
@@ -124,6 +126,7 @@ import qualified Prelude
 import Prelude (Char, (.))
 
 import Data.Hashable (Hashable)
+import Data.Vector.Unboxed (Unbox)
 
 import Data.Monoid (Monoid (..))
 import qualified Control.Arrow
@@ -150,6 +153,7 @@ import qualified Data.ByteString.Lazy
 import Data.Text (Text)
 import qualified Data.Text.Lazy
 import Data.Vector (Vector)
+import qualified Data.Vector.Unboxed
 import Data.Map (Map)
 import Data.Set (Set)
 import Data.HashMap.Strict (HashMap)
@@ -157,6 +161,7 @@ import Data.HashSet (HashSet)
 
 type LText = Data.Text.Lazy.Text
 type LByteString = Data.ByteString.Lazy.ByteString
+type UVector = Data.Vector.Unboxed
 
 empty :: Monoid w => w
 empty = mempty
