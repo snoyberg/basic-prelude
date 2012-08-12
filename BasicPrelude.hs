@@ -1,3 +1,5 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+
 module BasicPrelude
   ( module CorePrelude
   , module Data.List
@@ -46,6 +48,7 @@ import Prelude
   , until
   , asTypeOf
   , undefined
+  , String
   , ReadS
   , ShowS
   , Read (..)
