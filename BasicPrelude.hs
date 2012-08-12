@@ -161,7 +161,7 @@ import Data.HashSet (HashSet)
 
 type LText = Data.Text.Lazy.Text
 type LByteString = Data.ByteString.Lazy.ByteString
-type UVector = Data.Vector.Unboxed
+type UVector = Data.Vector.Unboxed.Vector
 
 empty :: Monoid w => w
 empty = mempty
