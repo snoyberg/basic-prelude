@@ -5,6 +5,7 @@ module BasicPrelude
   , module Data.List
   , module Prelude
   , module Data.Text
+  , module Control.Monad
   , show
   , read
   , putStr
@@ -38,11 +39,7 @@ import Data.List hiding
   )
 
 import Prelude
-  ( sequence
-  , sequence_
-  , mapM
-  , mapM_
-  , Bounded (..)
+  ( Bounded (..)
   , seq
   , curry
   , until
@@ -78,13 +75,11 @@ import Data.Text
   , intercalate
   )
 
--- not exported, only used for code here
-import System.IO
-  ( hSetBuffering
-  , stdin
-  , stdout
-  , BufferMode (NoBuffering)
-  )
+-- Import *all of the things* from Control.Monad,
+-- specifically, the list-based things that
+-- CorePrelude doesn't export
+import Control.Monad
+
 
 show :: Show a => a -> Text
 show = T.pack . P.show
