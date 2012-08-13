@@ -40,7 +40,10 @@ import Data.List hiding
 
 import Prelude
   ( Bounded (..)
+  , gcd
+  , lcm
   , seq
+  , ($!)
   , curry
   , until
   , asTypeOf
@@ -60,7 +63,7 @@ import Prelude
   , IOError
   , ioError
   , userError
-  , catch
+  , catch -- deprecated
   , putChar
   , getChar
   , readLn
