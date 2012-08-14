@@ -3,6 +3,7 @@ module CorePrelude
     ( -- * Standard
       -- ** Operators
       (Prelude.$)
+    , (Prelude.$!)
     , (Prelude.&&)
     , (Prelude.||)
     , (Control.Category..)
@@ -26,6 +27,12 @@ module CorePrelude
     , Prelude.odd
     , Prelude.even
     , Prelude.uncurry
+    , Prelude.curry
+    , Data.Tuple.swap
+    , Prelude.until
+    , Prelude.asTypeOf
+    , Prelude.undefined
+    , Prelude.seq
       -- ** Type classes
     , Prelude.Ord (..)
     , Prelude.Eq (..)
@@ -98,6 +105,10 @@ module CorePrelude
     , Data.Maybe.fromMaybe
       -- ** Either
     , Data.Either.partitionEithers
+      -- ** Ord
+    , Data.Function.on
+    , Data.Ord.comparing
+    , equating
       -- ** Applicative
     , Control.Applicative.Applicative (..)
     , (Control.Applicative.<$>)
@@ -123,7 +134,7 @@ module CorePrelude
     ) where
 
 import qualified Prelude
-import Prelude (Char, (.))
+import Prelude (Char, (.), Eq, Bool)
 
 import Data.Hashable (Hashable)
 import Data.Vector.Unboxed (Unbox)
@@ -144,6 +155,9 @@ import qualified Data.Text.IO
 
 import qualified Data.Maybe
 import qualified Data.Either
+import qualified Data.Ord
+import qualified Data.Function
+import qualified Data.Tuple
 
 import qualified Control.Monad.Trans.Class
 import qualified Control.Monad.IO.Class
@@ -172,3 +186,6 @@ concat = mconcat
 infixr 5  ++
 (++) :: Monoid w => w -> w -> w
 (++) = mappend
+
+equating :: Eq a => (b -> a) -> b -> b -> Bool
+equating = Data.Function.on (Prelude.==)
