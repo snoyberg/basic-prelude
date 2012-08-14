@@ -5,6 +5,7 @@ module BasicPrelude
   , module Data.List
   , module Prelude
   , module Data.Text
+  , module Data.Text.Lazy.IO
   , module Control.Monad
   , map
   , show
@@ -73,11 +74,9 @@ import Prelude
   , IOError
   , ioError
   , userError
-  , catch -- deprecated
   , putChar
   , getChar
   , readLn
-  , interact
   )
 
 import Data.Text
@@ -86,6 +85,10 @@ import Data.Text
   , unlines
   , unwords
   , intercalate
+  )
+
+import Data.Text.Lazy.IO
+  ( interact
   )
 
 -- Import *all of the things* from Control.Monad,
