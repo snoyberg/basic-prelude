@@ -9,6 +9,8 @@ module BasicPrelude
   , map
   , show
   , read
+  , sum
+  , product
   , putStr
   , getLine
   , getContents
@@ -40,6 +42,10 @@ import Data.List hiding
   
     -- prefer map = fmap instead
   , map
+    
+    -- prefer strict versions
+  , sum
+  , product
   )
 
 import Prelude
@@ -96,6 +102,12 @@ show = T.pack . P.show
 
 read :: Read a => Text -> a
 read = P.read . T.unpack
+
+sum :: Num a => [a] -> a
+sum = foldl' (+) 0
+
+product :: Num a => [a] -> a
+product = foldl' (*) 1
 
 putStr :: Text -> IO ()
 putStr = T.putStr
