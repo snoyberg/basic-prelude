@@ -6,6 +6,7 @@ module BasicPrelude
   , module Prelude
   , module Data.Text
   , module Control.Monad
+  , map
   , show
   , read
   , putStr
@@ -36,6 +37,9 @@ import Data.List hiding
   , unlines
   , unwords
   , intercalate
+  
+    -- prefer map = fmap instead
+  , map
   )
 
 import Prelude
@@ -83,6 +87,9 @@ import Data.Text
 -- CorePrelude doesn't export
 import Control.Monad
 
+
+map :: (Functor f) => (a -> b) -> f a -> f b
+map = fmap
 
 show :: Show a => a -> Text
 show = T.pack . P.show
