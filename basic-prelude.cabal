@@ -17,7 +17,7 @@ description:
 homepage:            https://github.com/snoyberg/basic-prelude
 license:             MIT
 license-file:        LICENSE
-author:              Michael Snoyman
+author:              Michael Snoyman, Dan Burton
 maintainer:          michael@snoyman.com
 
 category:            Control
