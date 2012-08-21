@@ -92,9 +92,7 @@ module CorePrelude
     , Prelude.realToFrac
       -- ** Monoids
     , Monoid (..)
-    , empty
-    , concat
-    , (++)
+    , (<>)
       -- ** Arrow
     , Control.Arrow.first
     , Control.Arrow.second
@@ -178,15 +176,12 @@ type LText = Data.Text.Lazy.Text
 type LByteString = Data.ByteString.Lazy.ByteString
 type UVector = Data.Vector.Unboxed.Vector
 
-empty :: Monoid w => w
-empty = mempty
-
-concat :: Monoid w => [w] -> w
-concat = mconcat
-
-infixr 5  ++
-(++) :: Monoid w => w -> w -> w
-(++) = mappend
+-- TODO: cpp import from Monoid instead?
+infixr 6 <>
+(<>) :: Monoid w => w -> w -> w
+(<>) = mappend
+{-# INLINE (<>) #-}
 
 equating :: Eq a => (b -> a) -> b -> b -> Bool
 equating = Data.Function.on (Prelude.==)
+

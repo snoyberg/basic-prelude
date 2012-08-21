@@ -19,6 +19,9 @@ module BasicPrelude
   , writeFile
   , appendFile
   , readIO
+  , empty
+  , (++)
+  , concat
   ) where
 
 import qualified Data.Text as T
@@ -30,7 +33,7 @@ import qualified Filesystem.Path.CurrentOS as F
 import CorePrelude
 
 import Data.List hiding
-  ( -- already in CorePrelude
+  ( -- prefer monoid versions instead
     (++)
   , concat
   
@@ -133,3 +136,13 @@ appendFile = T.appendFile . F.encodeString
 readIO :: Read a => Text -> IO a
 readIO = P.readIO . T.unpack
 
+
+empty :: Monoid w => w
+empty = mempty
+
+infixr 5 ++
+(++) :: Monoid w => w -> w -> w
+(++) = mappend
+
+concat :: Monoid w => [w] -> w
+concat = mconcat
