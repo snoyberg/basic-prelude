@@ -38,6 +38,7 @@ module CorePrelude
     , Prelude.Eq (..)
     , Prelude.Enum (..)
     , Prelude.Show
+    , Prelude.Read
     , Prelude.Functor (..)
     , Prelude.Monad (..)
     , (Control.Monad.=<<)
