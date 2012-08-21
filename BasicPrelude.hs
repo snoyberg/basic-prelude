@@ -56,12 +56,6 @@ import Prelude
   ( Bounded (..)
   , gcd
   , lcm
-  , seq
-  , ($!)
-  , curry
-  , until
-  , asTypeOf
-  , undefined
   , String
   , ReadS
   , ShowS
