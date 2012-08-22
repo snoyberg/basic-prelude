@@ -33,6 +33,7 @@ module CorePrelude
       -- ** Type classes
     , Prelude.Ord (..)
     , Prelude.Eq (..)
+    , Prelude.Bounded (..)
     , Prelude.Enum (..)
     , Prelude.Show
     , Prelude.Read
