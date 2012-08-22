@@ -18,12 +18,7 @@ module CorePrelude
     , Prelude.flip
     , Prelude.const
     , Prelude.error
-    , Prelude.zip
-    , Prelude.unzip
-    , Prelude.zipWith
-    , Prelude.or
     , Data.Text.IO.putStrLn
-    , Prelude.elem
     , Prelude.odd
     , Prelude.even
     , Prelude.uncurry
