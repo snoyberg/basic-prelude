@@ -9,6 +9,7 @@ description:
     Users wishing to have an improved @Prelude@ can use @BasicPrelude@. Developers wishing to create a new prelude should use @CorePrelude@.
     .
     Release history:
+    .
     [0.3] Moved a number of exports from @BasicPrelude@ to @CorePrelude@ and vice-versa.
     .
     [0.2] Renamed @BasicPrelude@ to @CorePrelude@ and added a new @BasicPrelude@ module provided a full-featured @Prelude@ alternative. Also added a number of new exports.
