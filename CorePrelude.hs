@@ -21,6 +21,7 @@ module CorePrelude
     , Prelude.const
     , Prelude.error
     , Data.Text.IO.putStrLn
+    , getArgs
     , Prelude.odd
     , Prelude.even
     , Prelude.uncurry
@@ -138,7 +139,7 @@ import Data.Vector.Unboxed (Unbox)
 
 import Data.Monoid (Monoid (..))
 import qualified Control.Arrow
-import qualified Control.Applicative
+import Control.Applicative
 import qualified Control.Category
 import qualified Control.Monad
 import qualified Control.Exception
@@ -170,6 +171,10 @@ import Data.Set (Set)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
 
+import qualified System.Environment
+import qualified Data.Text
+import qualified Data.List
+
 #if MIN_VERSION_base(4,5,0)
 import Data.Monoid ((<>))
 #endif
@@ -191,3 +196,6 @@ infixr 6 <>
 equating :: Eq a => (b -> a) -> b -> b -> Bool
 equating = Data.Function.on (Prelude.==)
 
+
+getArgs :: Prelude.IO [Text]
+getArgs = Data.List.map Data.Text.pack <$> System.Environment.getArgs
