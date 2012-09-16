@@ -129,6 +129,8 @@ module CorePrelude
     , F.filename
       -- ** Print
     , Prelude.print
+      -- ** Command line args
+    , readArgs
     ) where
 
 import qualified Prelude
@@ -170,6 +172,7 @@ import Data.Map (Map)
 import Data.Set (Set)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
+import ReadArgs (readArgs)
 
 import qualified System.Environment
 import qualified Data.Text
