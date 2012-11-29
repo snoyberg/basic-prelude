@@ -19,6 +19,7 @@ module BasicPrelude
   , empty
   , (++)
   , concat
+  , intercalate
     -- ** Strict implementation
   , sum
   , product
@@ -37,7 +38,6 @@ module BasicPrelude
   , Text.words
   , Text.unlines
   , Text.unwords
-  , Text.intercalate
     -- ** Text operations (IO)
   , Text.putStr
   , Text.getLine
@@ -79,12 +79,12 @@ import Data.List hiding
   ( -- prefer monoid versions instead
     (++)
   , concat
+  , intercalate
     -- prefer Text versions instead
   , lines
   , words
   , unlines
   , unwords
-  , intercalate
     -- prefer map = fmap instead
   , map
     -- prefer strict versions
@@ -123,6 +123,10 @@ infixr 5 ++
 -- | > concat = mconcat
 concat :: Monoid w => [w] -> w
 concat = mconcat
+
+-- | > intercalate = mconcat .: intersperse
+intercalate :: Monoid w => w -> [w] -> w
+intercalate xs xss = mconcat (Data.List.intersperse xs xss)
 
 
 -- | Compute the sum of a finite list of numbers.
