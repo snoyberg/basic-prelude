@@ -102,8 +102,14 @@ module CorePrelude
     , Data.Maybe.mapMaybe
     , Data.Maybe.catMaybes
     , Data.Maybe.fromMaybe
+    , Data.Maybe.isJust
+    , Data.Maybe.isNothing
+    , Data.Maybe.listToMaybe
+    , Data.Maybe.maybeToList
       -- ** Either
     , Data.Either.partitionEithers
+    , Data.Either.lefts
+    , Data.Either.rights
       -- ** Ord
     , Data.Function.on
     , Data.Ord.comparing
