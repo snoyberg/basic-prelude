@@ -41,6 +41,7 @@ module CorePrelude
     , Prelude.Functor (..)
     , Prelude.Monad (..)
     , (Control.Monad.=<<)
+    , Data.String.IsString (..)
       -- ** Numeric type classes
     , Prelude.Num (..)
     , Prelude.Real (..)
@@ -158,6 +159,7 @@ import qualified Data.Either
 import qualified Data.Ord
 import qualified Data.Function
 import qualified Data.Tuple
+import qualified Data.String
 
 import qualified Control.Monad.Trans.Class
 import qualified Control.Monad.IO.Class
