@@ -119,8 +119,15 @@ module CorePrelude
     , Control.Monad.IO.Class.liftIO
       -- ** Exceptions
     , Control.Exception.Exception (..)
+    , Data.Typeable.Typeable (..)
     , Control.Exception.SomeException
-    , Control.Exception.throwIO
+    , Control.Exception.IOException
+    , Control.Exception.Lifted.throwIO
+    , Control.Exception.Lifted.try
+    , Control.Exception.Lifted.catch
+    , Control.Exception.Lifted.bracket
+    , Control.Exception.Lifted.onException
+    , Control.Exception.Lifted.finally
       -- ** Files
     , F.FilePath
     , (F.</>)
@@ -146,6 +153,8 @@ import Control.Applicative
 import qualified Control.Category
 import qualified Control.Monad
 import qualified Control.Exception
+import qualified Control.Exception.Lifted
+import qualified Data.Typeable
 
 import qualified Filesystem.Path.CurrentOS as F
 
