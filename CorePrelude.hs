@@ -141,6 +141,7 @@ module CorePrelude
     , F.hasExtension
     , F.basename
     , F.filename
+    , F.directory
       -- ** Print
     , Prelude.print
       -- ** Command line args
