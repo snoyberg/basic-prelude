@@ -38,6 +38,8 @@ module BasicPrelude
   , Text.words
   , Text.unlines
   , Text.unwords
+  , textToString
+  , ltextToString
     -- ** Text operations (IO)
   , Text.putStr
   , Text.getLine
@@ -100,7 +102,8 @@ import Control.Monad
 
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
-import qualified Data.Text.Lazy.IO as LText 
+import qualified Data.Text.Lazy as LText
+import qualified Data.Text.Lazy.IO as LText
 import qualified Filesystem.Path.CurrentOS as FilePath
 import qualified Prelude
 
@@ -167,3 +170,8 @@ writeFile = Text.writeFile . FilePath.encodeString
 appendFile :: FilePath -> Text -> IO ()
 appendFile = Text.appendFile . FilePath.encodeString
 
+textToString :: Text -> Prelude.String
+textToString = Text.unpack
+
+ltextToString :: LText -> Prelude.String
+ltextToString = LText.unpack
