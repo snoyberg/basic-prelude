@@ -131,6 +131,7 @@ module CorePrelude
     , Control.Exception.Lifted.throwIO
     , Control.Exception.Lifted.try
     , Control.Exception.Lifted.catch
+    , Control.Exception.Lifted.handle
     , Control.Exception.Lifted.bracket
     , Control.Exception.Lifted.onException
     , Control.Exception.Lifted.finally
