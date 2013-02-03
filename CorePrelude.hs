@@ -143,6 +143,9 @@ module CorePrelude
     , F.basename
     , F.filename
     , F.directory
+      -- ** Hashing
+    , hash
+    , hashWithSalt
       -- ** Print
     , Prelude.print
       -- ** Command line args
@@ -152,7 +155,7 @@ module CorePrelude
 import qualified Prelude
 import Prelude (Char, (.), Eq, Bool)
 
-import Data.Hashable (Hashable)
+import Data.Hashable (Hashable, hash, hashWithSalt)
 import Data.Vector.Unboxed (Unbox)
 
 import Data.Monoid (Monoid (..))
