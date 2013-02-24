@@ -20,7 +20,7 @@ module CorePrelude
     , Prelude.flip
     , Prelude.const
     , Prelude.error
-    , Data.Text.IO.putStrLn
+    , putStrLn
     , getArgs
     , Prelude.odd
     , Prelude.even
@@ -183,6 +183,7 @@ import qualified Data.String
 
 import qualified Control.Monad.Trans.Class
 import qualified Control.Monad.IO.Class
+import Control.Monad.IO.Class (MonadIO (liftIO))
 
 import Data.ByteString (ByteString)
 import qualified Data.ByteString.Lazy
@@ -194,7 +195,7 @@ import Data.Map (Map)
 import Data.Set (Set)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
-import ReadArgs (readArgs)
+import qualified ReadArgs
 
 import qualified System.Environment
 import qualified Data.Text
@@ -222,5 +223,11 @@ equating :: Eq a => (b -> a) -> b -> b -> Bool
 equating = Data.Function.on (Prelude.==)
 
 
-getArgs :: Prelude.IO [Text]
-getArgs = Data.List.map Data.Text.pack <$> System.Environment.getArgs
+getArgs :: MonadIO m => m [Text]
+getArgs = liftIO (Data.List.map Data.Text.pack <$> System.Environment.getArgs)
+
+putStrLn :: MonadIO m => Text -> m ()
+putStrLn = liftIO . Data.Text.IO.putStrLn
+
+readArgs :: (MonadIO m, ReadArgs.ArgumentTuple a) => m a
+readArgs = liftIO ReadArgs.readArgs
