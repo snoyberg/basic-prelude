@@ -117,6 +117,7 @@ module CorePrelude
       -- ** Applicative
     , Control.Applicative.Applicative (..)
     , (Control.Applicative.<$>)
+    , (Control.Applicative.<|>)
       -- ** Monad
     , (Control.Monad.>=>)
       -- ** Transformers
