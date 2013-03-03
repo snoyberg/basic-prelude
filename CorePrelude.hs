@@ -68,6 +68,7 @@ module CorePrelude
     , HashMap
     , Set
     , HashSet
+    , Seq
     , Vector
     , UVector
     , Unbox
@@ -194,6 +195,7 @@ import Data.Vector (Vector)
 import qualified Data.Vector.Unboxed
 import Data.Map (Map)
 import Data.Set (Set)
+import Data.Sequence (Seq)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
 import qualified ReadArgs
