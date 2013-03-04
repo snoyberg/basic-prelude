@@ -145,6 +145,8 @@ module CorePrelude
     , F.basename
     , F.filename
     , F.directory
+      -- ** Strings
+    , Prelude.String
       -- ** Hashing
     , hash
     , hashWithSalt

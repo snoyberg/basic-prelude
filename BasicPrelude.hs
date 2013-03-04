@@ -51,7 +51,6 @@ module BasicPrelude
   , Prelude.gcd
   , Prelude.lcm
     -- ** Show and Read
-  , Prelude.String
   , Prelude.ShowS
   , Prelude.showsPrec
   , Prelude.showList
