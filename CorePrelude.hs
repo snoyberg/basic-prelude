@@ -137,6 +137,7 @@ module CorePrelude
     , Control.Exception.Lifted.bracket
     , Control.Exception.Lifted.onException
     , Control.Exception.Lifted.finally
+    , module System.IO.Error
       -- ** Files
     , F.FilePath
     , (F.</>)
@@ -205,6 +206,7 @@ import qualified ReadArgs
 import qualified System.Environment
 import qualified Data.Text
 import qualified Data.List
+import System.IO.Error
 
 #if MIN_VERSION_base(4,5,0)
 import Data.Monoid ((<>))

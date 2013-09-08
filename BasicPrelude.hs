@@ -68,10 +68,6 @@ module BasicPrelude
   , Prelude.putChar
   , Prelude.getChar
   , Prelude.readLn
-    -- ** Exceptions
-  , Prelude.IOError
-  , Prelude.ioError
-  , Prelude.userError
   ) where
 
 import CorePrelude
