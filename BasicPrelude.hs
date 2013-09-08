@@ -40,6 +40,8 @@ module BasicPrelude
   , Text.unwords
   , textToString
   , ltextToString
+  , encodeUtf8
+  , decodeUtf8
     -- ** Text operations (IO)
   , Text.putStr
   , Text.getLine
@@ -101,7 +103,8 @@ import qualified Data.Text.Lazy as LText
 import qualified Data.Text.Lazy.IO as LText
 import qualified Filesystem.Path.CurrentOS as FilePath
 import qualified Prelude
-
+import Data.Text.Encoding (encodeUtf8, decodeUtf8With)
+import Data.Text.Encoding.Error (lenientDecode)
 
 
 -- | > map = fmap
@@ -170,3 +173,9 @@ textToString = Text.unpack
 
 ltextToString :: LText -> Prelude.String
 ltextToString = LText.unpack
+
+-- | Note that this is /not/ the standard @Data.Text.Encoding.decodeUtf8@. That
+-- function will throw impure exceptions on any decoding errors. This function
+-- instead uses @decodeLenient@.
+decodeUtf8 :: ByteString -> Text
+decodeUtf8 = decodeUtf8With lenientDecode
