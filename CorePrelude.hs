@@ -115,6 +115,7 @@ module CorePrelude
     , Data.Function.on
     , Data.Ord.comparing
     , equating
+    , GHC.Exts.Down (..)
       -- ** Applicative
     , Control.Applicative.Applicative (..)
     , (Control.Applicative.<$>)
@@ -207,6 +208,7 @@ import qualified System.Environment
 import qualified Data.Text
 import qualified Data.List
 import System.IO.Error hiding (catch, try)
+import qualified GHC.Exts
 
 #if MIN_VERSION_base(4,5,0)
 import Data.Monoid ((<>))
