@@ -66,6 +66,7 @@ module BasicPrelude
   , Prelude.reads
   , Prelude.readParen
   , Prelude.lex
+  , readMay
     -- ** IO operations
   , Prelude.putChar
   , Prelude.getChar
@@ -105,7 +106,7 @@ import qualified Filesystem.Path.CurrentOS as FilePath
 import qualified Prelude
 import Data.Text.Encoding (encodeUtf8, decodeUtf8With)
 import Data.Text.Encoding.Error (lenientDecode)
-
+import qualified Safe
 
 -- | > map = fmap
 map :: (Functor f) => (a -> b) -> f a -> f b
@@ -179,3 +180,6 @@ ltextToString = LText.unpack
 -- instead uses @decodeLenient@.
 decodeUtf8 :: ByteString -> Text
 decodeUtf8 = decodeUtf8With lenientDecode
+
+readMay :: Read a => Text -> Maybe a
+readMay = Safe.readMay . Text.unpack

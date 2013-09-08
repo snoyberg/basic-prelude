@@ -39,6 +39,7 @@ library
                      , system-filepath          >= 0.4     && < 0.5
                      , ReadArgs                 >= 1.2     && < 1.3
                      , lifted-base
+                     , safe
 
 source-repository head
   type:     git
