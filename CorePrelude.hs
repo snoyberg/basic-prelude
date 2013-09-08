@@ -206,7 +206,7 @@ import qualified ReadArgs
 import qualified System.Environment
 import qualified Data.Text
 import qualified Data.List
-import System.IO.Error
+import System.IO.Error hiding (catch, try)
 
 #if MIN_VERSION_base(4,5,0)
 import Data.Monoid ((<>))
