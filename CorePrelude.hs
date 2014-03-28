@@ -72,6 +72,8 @@ module CorePrelude
     , Vector
     , UVector
     , Unbox
+    , SVector
+    , Data.Vector.Storable.Storable
     , Hashable
       -- ** Numbers
     , Word
@@ -197,6 +199,7 @@ import Data.Text (Text)
 import qualified Data.Text.Lazy
 import Data.Vector (Vector)
 import qualified Data.Vector.Unboxed
+import qualified Data.Vector.Storable
 import Data.Map (Map)
 import Data.Set (Set)
 import Data.Sequence (Seq)
@@ -217,6 +220,7 @@ import Data.Monoid ((<>))
 type LText = Data.Text.Lazy.Text
 type LByteString = Data.ByteString.Lazy.ByteString
 type UVector = Data.Vector.Unboxed.Vector
+type SVector = Data.Vector.Storable.Vector
 
 
 #if !MIN_VERSION_base(4,5,0)
