@@ -66,8 +66,10 @@ module CorePrelude
       -- ** Containers
     , Map
     , HashMap
+    , IntMap
     , Set
     , HashSet
+    , IntSet
     , Seq
     , Vector
     , UVector
@@ -202,6 +204,8 @@ import qualified Data.Vector.Unboxed
 import qualified Data.Vector.Storable
 import Data.Map (Map)
 import Data.Set (Set)
+import Data.IntMap (IntMap)
+import Data.IntSet (IntSet)
 import Data.Sequence (Seq)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
