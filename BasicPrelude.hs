@@ -43,7 +43,6 @@ module BasicPrelude
   , encodeUtf8
   , decodeUtf8
     -- ** Text operations (IO)
-  , Text.putStr
   , Text.getLine
   , LText.getContents
   , LText.interact

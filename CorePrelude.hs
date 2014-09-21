@@ -20,6 +20,7 @@ module CorePrelude
     , Prelude.flip
     , Prelude.const
     , Prelude.error
+    , putStr
     , putStrLn
     , getArgs
     , Prelude.odd
@@ -242,6 +243,9 @@ equating = Data.Function.on (Prelude.==)
 
 getArgs :: MonadIO m => m [Text]
 getArgs = liftIO (Data.List.map Data.Text.pack <$> System.Environment.getArgs)
+
+putStr :: MonadIO m => Text -> m ()
+putStr = liftIO . Data.Text.IO.putStr
 
 putStrLn :: MonadIO m => Text -> m ()
 putStrLn = liftIO . Data.Text.IO.putStrLn
