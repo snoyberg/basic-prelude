@@ -138,11 +138,20 @@ module CorePrelude
     , Control.Exception.IOException
     , Control.Exception.Lifted.throwIO
     , Control.Exception.Lifted.try
+    , Control.Exception.Lifted.tryJust
     , Control.Exception.Lifted.catch
+    , Control.Exception.Lifted.catchJust
     , Control.Exception.Lifted.handle
+    , Control.Exception.Lifted.handleJust
     , Control.Exception.Lifted.bracket
+    , Control.Exception.Lifted.bracket_
+    , Control.Exception.Lifted.bracketOnError
     , Control.Exception.Lifted.onException
     , Control.Exception.Lifted.finally
+    , Control.Exception.Lifted.mask
+    , Control.Exception.Lifted.mask_
+    , Control.Exception.Lifted.uninterruptibleMask
+    , Control.Exception.Lifted.uninterruptibleMask_
     , module System.IO.Error
       -- ** Files
     , F.FilePath
