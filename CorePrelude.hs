@@ -22,6 +22,7 @@ module CorePrelude
     , Prelude.error
     , putStr
     , putStrLn
+    , print
     , getArgs
     , Prelude.odd
     , Prelude.even
@@ -166,8 +167,6 @@ module CorePrelude
       -- ** Hashing
     , hash
     , hashWithSalt
-      -- ** Print
-    , Prelude.print
       -- ** Command line args
     , readArgs
     ) where
@@ -258,6 +257,9 @@ putStr = liftIO . Data.Text.IO.putStr
 
 putStrLn :: MonadIO m => Text -> m ()
 putStrLn = liftIO . Data.Text.IO.putStrLn
+
+print :: (MonadIO m, Prelude.Show a) => a -> m ()
+print = liftIO . Prelude.print
 
 readArgs :: (MonadIO m, ReadArgs.ArgumentTuple a) => m a
 readArgs = liftIO ReadArgs.readArgs
