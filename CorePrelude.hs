@@ -259,7 +259,7 @@ putStrLn :: MonadIO m => Text -> m ()
 putStrLn = liftIO . Data.Text.IO.putStrLn
 
 print :: (MonadIO m, Prelude.Show a) => a -> m ()
-print = putStrLn . Data.Text.pack . Prelude.show
+print = liftIO . Prelude.print
 
 readArgs :: (MonadIO m, ReadArgs.ArgumentTuple a) => m a
 readArgs = liftIO ReadArgs.readArgs
