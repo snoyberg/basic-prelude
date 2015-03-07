@@ -3,7 +3,7 @@ basic-prelude
 
 The premise of `basic-prelude` is that there are a lot of very commonly desired
 features missing from the standard `Prelude`, such as commonly used operators
-(`\<$\>` and `>=>`, for instance) and imports for common datatypes (e.g.,
+(`<$>` and `>=>`, for instance) and imports for common datatypes (e.g.,
 `ByteString` and `Vector`). At the same time, there are lots of other
 components which are more debatable, such as providing polymorphic versions of
 common functions.
