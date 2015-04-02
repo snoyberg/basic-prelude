@@ -25,6 +25,7 @@ module BasicPrelude
   , product
     -- ** Text for Read and Show operations
   , show
+  , fromShow
   , read
   , readIO
     -- ** FilePath for file operations
@@ -142,6 +143,10 @@ product = foldl' (*) 1
 -- | Convert a value to readable Text
 show :: Show a => a -> Text
 show = Text.pack . Prelude.show
+
+-- | Convert a value to readable IsString
+fromShow :: (Show a, IsString b) => a -> b
+fromShow = fromString . Prelude.show
 
 -- | Parse Text to a value
 read :: Read a => Text -> a
