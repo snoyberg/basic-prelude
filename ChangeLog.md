@@ -1,3 +1,7 @@
+## 0.3.12
+
+* Add `fromShow` [#55](https://github.com/snoyberg/basic-prelude/pull/55)
+
 ## 0.3.11
 
 * [Generalize `print`](https://github.com/snoyberg/basic-prelude/pull/51)

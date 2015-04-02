@@ -145,6 +145,8 @@ show :: Show a => a -> Text
 show = Text.pack . Prelude.show
 
 -- | Convert a value to readable IsString
+--
+-- Since 0.3.12
 fromShow :: (Show a, IsString b) => a -> b
 fromShow = fromString . Prelude.show
 
