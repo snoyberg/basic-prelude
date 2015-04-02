@@ -140,8 +140,8 @@ product = foldl' (*) 1
 
 
 -- | Convert a value to readable Text
-show :: Show a => a -> Text
-show = Text.pack . Prelude.show
+show :: (Show a, IsString b) => a -> b
+show = fromString . Prelude.show
 
 -- | Parse Text to a value
 read :: Read a => Text -> a
