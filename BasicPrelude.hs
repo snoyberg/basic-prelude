@@ -41,6 +41,9 @@ module BasicPrelude
   , Text.unwords
   , textToString
   , ltextToString
+  , filePathToText
+  , filePathFromText
+  , filePathToString
   , encodeUtf8
   , decodeUtf8
     -- ** Text operations (IO)
@@ -180,6 +183,17 @@ textToString = Text.unpack
 
 ltextToString :: LText -> Prelude.String
 ltextToString = LText.unpack
+
+-- | This function assumes file paths are encoded in UTF8. If it
+-- cannot decode the 'FilePath', the result is just an approximation.
+filePathToText :: FilePath -> Text
+filePathToText = either id id . FilePath.toText
+
+filePathFromText :: Text -> FilePath
+filePathFromText = FilePath.fromText
+
+filePathToString :: FilePath -> Prelude.String
+filePathToString = FilePath.encodeString
 
 -- | Note that this is /not/ the standard @Data.Text.Encoding.decodeUtf8@. That
 -- function will throw impure exceptions on any decoding errors. This function
