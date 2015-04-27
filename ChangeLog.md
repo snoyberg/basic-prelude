@@ -1,3 +1,7 @@
+## 0.3.13
+
+* Export converters between FilePath <-> Text, String. [#56](https://github.com/snoyberg/basic-prelude/pull/56)
+
 ## 0.3.12
 
 * Add `fromShow` [#55](https://github.com/snoyberg/basic-prelude/pull/55)

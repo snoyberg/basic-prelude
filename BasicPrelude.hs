@@ -186,12 +186,18 @@ ltextToString = LText.unpack
 
 -- | This function assumes file paths are encoded in UTF8. If it
 -- cannot decode the 'FilePath', the result is just an approximation.
+--
+-- Since 0.3.13
 fpToText :: FilePath -> Text
 fpToText = either id id . FilePath.toText
 
+-- |
+-- Since 0.3.13
 fpFromText :: Text -> FilePath
 fpFromText = FilePath.fromText
 
+-- |
+-- Since 0.3.13
 fpToString :: FilePath -> Prelude.String
 fpToString = FilePath.encodeString
 
