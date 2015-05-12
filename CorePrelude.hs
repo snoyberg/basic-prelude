@@ -155,13 +155,9 @@ module CorePrelude
     , Control.Exception.Lifted.uninterruptibleMask_
     , module System.IO.Error
       -- ** Files
-    , F.FilePath
+    , Prelude.FilePath
     , (F.</>)
     , (F.<.>)
-    , F.hasExtension
-    , F.basename
-    , F.filename
-    , F.directory
       -- ** Strings
     , Prelude.String
       -- ** Hashing
@@ -185,8 +181,6 @@ import qualified Control.Monad
 import qualified Control.Exception
 import qualified Control.Exception.Lifted
 import qualified Data.Typeable
-
-import qualified Filesystem.Path.CurrentOS as F
 
 import Data.Word (Word8, Word32, Word64, Word)
 import Data.Int (Int32, Int64)
@@ -219,6 +213,7 @@ import Data.Sequence (Seq)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
 import qualified ReadArgs
+import qualified System.FilePath as F
 
 import qualified System.Environment
 import qualified Data.Text

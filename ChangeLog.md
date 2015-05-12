@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Drop system-filepath
+
 ## 0.3.13
 
 * Export converters between FilePath <-> Text, String. [#56](https://github.com/snoyberg/basic-prelude/pull/56)

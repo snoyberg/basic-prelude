@@ -105,7 +105,6 @@ import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import qualified Data.Text.Lazy as LText
 import qualified Data.Text.Lazy.IO as LText
-import qualified Filesystem.Path.CurrentOS as FilePath
 import qualified Prelude
 import Data.Text.Encoding (encodeUtf8, decodeUtf8With)
 import Data.Text.Encoding.Error (lenientDecode)
@@ -167,16 +166,16 @@ readIO = Prelude.readIO . Text.unpack
 -- | Read a file and return the contents of the file as Text.
 -- The entire file is read strictly.
 readFile :: FilePath -> IO Text
-readFile = Text.readFile . FilePath.encodeString
+readFile = Text.readFile
 
 -- | Write Text to a file.
 -- The file is truncated to zero length before writing begins.
 writeFile :: FilePath -> Text -> IO ()
-writeFile = Text.writeFile . FilePath.encodeString
+writeFile = Text.writeFile
 
 -- | Write Text to the end of a file.
 appendFile :: FilePath -> Text -> IO ()
-appendFile = Text.appendFile . FilePath.encodeString
+appendFile = Text.appendFile
 
 textToString :: Text -> Prelude.String
 textToString = Text.unpack
@@ -189,17 +188,20 @@ ltextToString = LText.unpack
 --
 -- Since 0.3.13
 fpToText :: FilePath -> Text
-fpToText = either id id . FilePath.toText
+fpToText = Text.pack
+{-# DEPRECATED fpToText "Use Data.Text.pack" #-}
 
 -- |
 -- Since 0.3.13
 fpFromText :: Text -> FilePath
-fpFromText = FilePath.fromText
+fpFromText = Text.unpack
+{-# DEPRECATED fpFromText "Use Data.Text.unpack" #-}
 
 -- |
 -- Since 0.3.13
 fpToString :: FilePath -> Prelude.String
-fpToString = FilePath.encodeString
+fpToString = id
+{-# DEPRECATED fpToString "Use id" #-}
 
 -- | Note that this is /not/ the standard @Data.Text.Encoding.decodeUtf8@. That
 -- function will throw impure exceptions on any decoding errors. This function
