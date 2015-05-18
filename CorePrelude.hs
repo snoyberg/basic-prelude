@@ -24,6 +24,7 @@ module CorePrelude
     , putStrLn
     , print
     , getArgs
+    , terror
     , Prelude.odd
     , Prelude.even
     , Prelude.uncurry
@@ -258,3 +259,6 @@ print = liftIO . Prelude.print
 
 readArgs :: (MonadIO m, ReadArgs.ArgumentTuple a) => m a
 readArgs = liftIO ReadArgs.readArgs
+
+terror :: Text -> a
+terror = Prelude.error . Data.Text.unpack
