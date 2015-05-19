@@ -13,6 +13,26 @@ module BasicPrelude
   , module Data.List
   , module Control.Monad
 
+    -- ** Folds and traversals
+  , Foldable
+    (
+      elem
+    , foldMap
+    , foldr
+    , foldl
+    , foldr1
+    , foldl1
+    , maximum
+    , minimum
+    )
+  , Traversable
+    (
+      traverse
+    , sequenceA
+    , mapM
+    , sequence
+    )
+
     -- * Enhanced exports
     -- ** Simpler name for a typeclassed operation
   , map
@@ -21,8 +41,8 @@ module BasicPrelude
   , concat
   , intercalate
     -- ** Strict implementation
-  , sum
-  , product
+  , BasicPrelude.sum
+  , BasicPrelude.product
     -- ** Text for Read and Show operations
   , show
   , fromShow
@@ -101,6 +121,8 @@ import Data.List hiding
 import Control.Monad
 
 
+import Data.Foldable (Foldable(..))
+import Data.Traversable (Traversable(..))
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import qualified Data.Text.Lazy as LText

@@ -101,7 +101,10 @@ module CorePrelude
       -- ** Monoids
     , Monoid (..)
     , (<>)
-      -- ** Arrow
+      -- ** Folds and traversals
+    , Data.Foldable.Foldable
+    , Data.Traversable.Traversable
+      -- ** arrow
     , Control.Arrow.first
     , Control.Arrow.second
     , (Control.Arrow.***)
@@ -182,6 +185,9 @@ import qualified Control.Monad
 import qualified Control.Exception
 import qualified Control.Exception.Lifted
 import qualified Data.Typeable
+
+import qualified Data.Foldable
+import qualified Data.Traversable
 
 import Data.Word (Word8, Word32, Word64, Word)
 import Data.Int (Int32, Int64)
