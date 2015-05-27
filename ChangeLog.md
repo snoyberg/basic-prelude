@@ -1,3 +1,7 @@
+## 0.4.1
+
+* terror
+
 ## 0.4.0
 
 * Drop system-filepath

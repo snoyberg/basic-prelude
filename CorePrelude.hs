@@ -260,5 +260,8 @@ print = liftIO . Prelude.print
 readArgs :: (MonadIO m, ReadArgs.ArgumentTuple a) => m a
 readArgs = liftIO ReadArgs.readArgs
 
+-- | @error@ applied to @Text@
+--
+-- Since 0.4.1
 terror :: Text -> a
 terror = Prelude.error . Data.Text.unpack
