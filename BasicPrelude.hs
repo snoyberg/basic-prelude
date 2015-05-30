@@ -16,15 +16,16 @@ module BasicPrelude
     -- ** Folds and traversals
   , Foldable
     (
-      elem
-    , foldMap
+      foldMap
     , foldr
     , foldl
     , foldr1
     , foldl1
-    , maximum
-    , minimum
     )
+    -- In base-4.8, these are instance methods.
+  , elem
+  , maximum
+  , minimum
   , Traversable
     (
       traverse
@@ -113,15 +114,27 @@ import Data.List hiding
     -- prefer strict versions
   , sum
   , product
+    -- prefer Foldable versions
+  , elem
+  , foldl
+  , foldl1
+  , foldr
+  , foldr1
+  , maximum
+  , minimum
   )
 
 -- Import *all of the things* from Control.Monad,
 -- specifically, the list-based things that
 -- CorePrelude doesn't export
-import Control.Monad
+import Control.Monad hiding
+  ( -- Also exported by Data.Traversable.
+    mapM
+  , sequence
+  )
 
 
-import Data.Foldable (Foldable(..))
+import Data.Foldable (Foldable(..), elem, maximum, minimum)
 import Data.Traversable (Traversable(..))
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
@@ -157,11 +170,11 @@ intercalate xs xss = mconcat (Data.List.intersperse xs xss)
 
 -- | Compute the sum of a finite list of numbers.
 sum :: Num a => [a] -> a
-sum = foldl' (+) 0
+sum = Data.Foldable.foldl' (+) 0
 
 -- | Compute the product of a finite list of numbers.
 product :: Num a => [a] -> a
-product = foldl' (*) 1
+product = Data.Foldable.foldl' (*) 1
 
 
 -- | Convert a value to readable Text
