@@ -18,7 +18,9 @@ module BasicPrelude
     (
       foldMap
     , foldr
+    , foldr'
     , foldl
+    , foldl'
     , foldr1
     , foldl1
     )
@@ -117,8 +119,10 @@ import Data.List hiding
     -- prefer Foldable versions
   , elem
   , foldl
+  , foldl'
   , foldl1
   , foldr
+  , foldr'
   , foldr1
   , maximum
   , minimum
