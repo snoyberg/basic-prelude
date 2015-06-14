@@ -1,3 +1,7 @@
+## 0.5.0
+
+* Expose more Foldable/Traversable stuff
+
 ## 0.4.1
 
 * terror
