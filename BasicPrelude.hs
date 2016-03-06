@@ -197,7 +197,7 @@ read = Prelude.read . Text.unpack
 
 -- | The readIO function is similar to read
 -- except that it signals parse failure to the IO monad
--- instead of terminating the program. 
+-- instead of terminating the program.
 readIO :: Read a => Text -> IO a
 readIO = Prelude.readIO . Text.unpack
 
