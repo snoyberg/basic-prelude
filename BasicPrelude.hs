@@ -156,6 +156,7 @@ map = fmap
 -- | > empty = mempty
 empty :: Monoid w => w
 empty = mempty
+{-# DEPRECATED empty "Use mempty" #-}
 
 infixr 5 ++
 
