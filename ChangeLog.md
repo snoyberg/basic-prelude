@@ -1,3 +1,8 @@
+## 0.5.1
+
+* Expose `asum`
+* Deprecate `empty` (so it can be replaced with `Alternative`'s `empty`)
+
 ## 0.5.0
 
 * Expose more Foldable/Traversable stuff
