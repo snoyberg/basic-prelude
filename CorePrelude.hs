@@ -103,6 +103,7 @@ module CorePrelude
     , (<>)
       -- ** Folds and traversals
     , Data.Foldable.Foldable
+    , Data.Foldable.asum
     , Data.Traversable.Traversable
       -- ** arrow
     , Control.Arrow.first
