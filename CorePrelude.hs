@@ -110,6 +110,8 @@ module CorePrelude
     , Control.Arrow.second
     , (Control.Arrow.***)
     , (Control.Arrow.&&&)
+      -- ** Bool
+    , bool
       -- ** Maybe
     , Data.Maybe.mapMaybe
     , Data.Maybe.catMaybes
@@ -229,6 +231,10 @@ import qualified Data.List
 import System.IO.Error hiding (catch, try)
 import qualified GHC.Exts
 
+#if MIN_VERSION_base(4,7,0)
+import Data.Bool (bool)
+#endif
+
 #if MIN_VERSION_base(4,5,0)
 import Data.Monoid ((<>))
 #endif
@@ -238,6 +244,11 @@ type LByteString = Data.ByteString.Lazy.ByteString
 type UVector = Data.Vector.Unboxed.Vector
 type SVector = Data.Vector.Storable.Vector
 
+
+#if !MIN_VERSION_base(4,7,0)
+bool :: a -> a -> Bool -> a
+bool f t b = if b then t else f
+#endif
 
 #if !MIN_VERSION_base(4,5,0)
 
