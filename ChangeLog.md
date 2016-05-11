@@ -1,3 +1,7 @@
+## 0.5.2
+
+* Expose `bool`
+
 ## 0.5.1
 
 * Expose `asum`
