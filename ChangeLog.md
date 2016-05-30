@@ -1,3 +1,7 @@
+## 0.6.0
+
+* Export `show` from `Show` typeclass, and rename current `show` to `tshow` [#67](https://github.com/snoyberg/basic-prelude/issues/67)
+
 ## 0.5.2
 
 * Expose `bool`

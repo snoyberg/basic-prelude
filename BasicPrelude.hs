@@ -47,7 +47,7 @@ module BasicPrelude
   , BasicPrelude.sum
   , BasicPrelude.product
     -- ** Text for Read and Show operations
-  , show
+  , tshow
   , fromShow
   , read
   , readIO
@@ -79,9 +79,8 @@ module BasicPrelude
   , Prelude.gcd
   , Prelude.lcm
     -- ** Show and Read
+  , Prelude.Show (..)
   , Prelude.ShowS
-  , Prelude.showsPrec
-  , Prelude.showList
   , Prelude.shows
   , Prelude.showChar
   , Prelude.showString
@@ -183,8 +182,10 @@ product = Data.Foldable.foldl' (*) 1
 
 
 -- | Convert a value to readable Text
-show :: Show a => a -> Text
-show = Text.pack . Prelude.show
+--
+-- @since 0.6.0
+tshow :: Show a => a -> Text
+tshow = Text.pack . Prelude.show
 
 -- | Convert a value to readable IsString
 --
