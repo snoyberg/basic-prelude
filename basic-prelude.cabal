@@ -29,7 +29,7 @@ library
                      , containers
                      , unordered-containers
                      , vector
-                     , lifted-base
+                     , safe-exceptions
                      , safe
                      , filepath
 

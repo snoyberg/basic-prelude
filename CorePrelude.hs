@@ -144,22 +144,22 @@ module CorePrelude
     , Data.Typeable.Typeable (..)
     , Control.Exception.SomeException
     , Control.Exception.IOException
-    , Control.Exception.Lifted.throwIO
-    , Control.Exception.Lifted.try
-    , Control.Exception.Lifted.tryJust
-    , Control.Exception.Lifted.catch
-    , Control.Exception.Lifted.catchJust
-    , Control.Exception.Lifted.handle
-    , Control.Exception.Lifted.handleJust
-    , Control.Exception.Lifted.bracket
-    , Control.Exception.Lifted.bracket_
-    , Control.Exception.Lifted.bracketOnError
-    , Control.Exception.Lifted.onException
-    , Control.Exception.Lifted.finally
-    , Control.Exception.Lifted.mask
-    , Control.Exception.Lifted.mask_
-    , Control.Exception.Lifted.uninterruptibleMask
-    , Control.Exception.Lifted.uninterruptibleMask_
+    , Control.Exception.Safe.throwIO
+    , Control.Exception.Safe.try
+    , Control.Exception.Safe.tryJust
+    , Control.Exception.Safe.catch
+    , Control.Exception.Safe.catchJust
+    , Control.Exception.Safe.handle
+    , Control.Exception.Safe.handleJust
+    , Control.Exception.Safe.bracket
+    , Control.Exception.Safe.bracket_
+    , Control.Exception.Safe.bracketOnError
+    , Control.Exception.Safe.onException
+    , Control.Exception.Safe.finally
+    , Control.Exception.Safe.mask
+    , Control.Exception.Safe.mask_
+    , Control.Exception.Safe.uninterruptibleMask
+    , Control.Exception.Safe.uninterruptibleMask_
     , module System.IO.Error
       -- ** Files
     , Prelude.FilePath
@@ -184,7 +184,7 @@ import Control.Applicative
 import qualified Control.Category
 import qualified Control.Monad
 import qualified Control.Exception
-import qualified Control.Exception.Lifted
+import qualified Control.Exception.Safe
 import qualified Data.Typeable
 
 import qualified Data.Foldable

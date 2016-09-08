@@ -1,6 +1,7 @@
 ## 0.7.0
 
 * Remove ReadArgs dependency
+* Switched from `lifted-base` to `safe-exceptions`
 
 ## 0.6.1
 
