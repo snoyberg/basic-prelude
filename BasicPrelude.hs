@@ -173,11 +173,11 @@ intercalate xs xss = mconcat (Data.List.intersperse xs xss)
 
 
 -- | Compute the sum of a finite list of numbers.
-sum :: Num a => [a] -> a
+sum :: (Foldable f, Num a) => f a -> a
 sum = Data.Foldable.foldl' (+) 0
 
 -- | Compute the product of a finite list of numbers.
-product :: Num a => [a] -> a
+product :: (Foldable f, Num a) => f a -> a
 product = Data.Foldable.foldl' (*) 1
 
 
