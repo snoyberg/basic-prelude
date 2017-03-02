@@ -239,6 +239,10 @@ import Data.Bool (bool)
 import Data.Monoid ((<>))
 #endif
 
+#if MIN_VERSION_base(4,9,0)
+import GHC.Stack (HasCallStack)
+#endif
+
 type LText = Data.Text.Lazy.Text
 type LByteString = Data.ByteString.Lazy.ByteString
 type UVector = Data.Vector.Unboxed.Vector
@@ -281,5 +285,9 @@ readArgs = liftIO ReadArgs.readArgs
 -- | @error@ applied to @Text@
 --
 -- Since 0.4.1
+#if MIN_VERSION_base(4,9,0)
+terror :: HasCallStack => Text -> a
+#else
 terror :: Text -> a
+#endif
 terror = Prelude.error . Data.Text.unpack

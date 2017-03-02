@@ -1,3 +1,7 @@
+## 0.6.1.1
+
+* Add `HasCallStack` for `terror`
+
 ## 0.6.1
 
 * Generalize `sum` and `product` to `Foldable` [#69](https://github.com/snoyberg/basic-prelude/issues/69)
