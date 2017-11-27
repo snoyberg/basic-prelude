@@ -28,6 +28,9 @@ module BasicPrelude
   , elem
   , maximum
   , minimum
+  , traverse_
+  , sequenceA_
+  , for_
   , Traversable
     (
       traverse
@@ -35,6 +38,7 @@ module BasicPrelude
     , mapM
     , sequence
     )
+  , for
 
     -- * Enhanced exports
     -- ** Simpler name for a typeclassed operation
@@ -137,8 +141,8 @@ import Control.Monad hiding
   )
 
 
-import Data.Foldable (Foldable(..), elem, maximum, minimum)
-import Data.Traversable (Traversable(..))
+import Data.Foldable (Foldable(..), elem, maximum, minimum, traverse_, sequenceA_, for_)
+import Data.Traversable (Traversable(..), for)
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import qualified Data.Text.Lazy as LText
