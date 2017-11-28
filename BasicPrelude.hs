@@ -1,4 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE CPP #-}
 
 -- | BasicPrelude mostly re-exports
 -- several key libraries in their entirety.
@@ -31,6 +32,8 @@ module BasicPrelude
   , traverse_
   , sequenceA_
   , for_
+  , maximumBy
+  , minimumBy
   , Traversable
     (
       traverse
@@ -129,6 +132,8 @@ import Data.List hiding
   , foldr1
   , maximum
   , minimum
+  , maximumBy
+  , minimumBy
   )
 
 -- Import *all of the things* from Control.Monad,
@@ -151,6 +156,22 @@ import qualified Prelude
 import Data.Text.Encoding (encodeUtf8, decodeUtf8With)
 import Data.Text.Encoding.Error (lenientDecode)
 import qualified Safe
+
+#if MIN_VERSION_base(4,10,0)
+import Data.Foldable (maximumBy, minimumBy)
+#else
+maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+maximumBy cmp = foldl1 max'
+  where max' x y = case cmp x y of
+                     GT -> x
+                     _  -> y
+
+minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+minimumBy cmp = foldl1 min'
+  where min' x y = case cmp x y of
+                     GT -> y
+                     _  -> x
+#endif
 
 -- | > map = fmap
 map :: (Functor f) => (a -> b) -> f a -> f b
