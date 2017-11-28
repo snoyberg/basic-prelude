@@ -128,7 +128,6 @@ import Data.List hiding
   , foldl'
   , foldl1
   , foldr
-  , foldr'
   , foldr1
   , maximum
   , minimum
