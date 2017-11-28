@@ -74,9 +74,9 @@ module BasicPrelude
   , encodeUtf8
   , decodeUtf8
     -- ** Text operations (IO)
-  , Text.getLine
-  , LText.getContents
-  , LText.interact
+  , getLine
+  , getContents
+  , interact
 
     -- * Miscellaneous prelude re-exports
     -- ** Math
@@ -97,9 +97,9 @@ module BasicPrelude
   , Prelude.lex
   , readMay
     -- ** IO operations
-  , Prelude.putChar
-  , Prelude.getChar
-  , Prelude.readLn
+  , getChar
+  , putChar
+  , readLn
   ) where
 
 import CorePrelude
@@ -204,23 +204,23 @@ read = Prelude.read . Text.unpack
 -- | The readIO function is similar to read
 -- except that it signals parse failure to the IO monad
 -- instead of terminating the program.
-readIO :: Read a => Text -> IO a
-readIO = Prelude.readIO . Text.unpack
+readIO :: (MonadIO m, Read a) => Text -> m a
+readIO = liftIO . Prelude.readIO . Text.unpack
 
 
 -- | Read a file and return the contents of the file as Text.
 -- The entire file is read strictly.
-readFile :: FilePath -> IO Text
-readFile = Text.readFile
+readFile :: MonadIO m => FilePath -> m Text
+readFile = liftIO . Text.readFile
 
 -- | Write Text to a file.
 -- The file is truncated to zero length before writing begins.
-writeFile :: FilePath -> Text -> IO ()
-writeFile = Text.writeFile
+writeFile :: MonadIO m => FilePath -> Text -> m ()
+writeFile p = liftIO . Text.writeFile p
 
 -- | Write Text to the end of a file.
-appendFile :: FilePath -> Text -> IO ()
-appendFile = Text.appendFile
+appendFile :: MonadIO m => FilePath -> Text -> m ()
+appendFile p = liftIO . Text.appendFile p
 
 textToString :: Text -> Prelude.String
 textToString = Text.unpack
@@ -254,5 +254,24 @@ fpToString = id
 decodeUtf8 :: ByteString -> Text
 decodeUtf8 = decodeUtf8With lenientDecode
 
+getLine :: MonadIO m => m Text
+getLine = liftIO Text.getLine
+
+getContents :: MonadIO m => m LText
+getContents = liftIO LText.getContents
+
+interact :: MonadIO m => (LText -> LText) -> m ()
+interact = liftIO . LText.interact
+
 readMay :: Read a => Text -> Maybe a
 readMay = Safe.readMay . Text.unpack
+
+getChar :: MonadIO m => m Char
+getChar = liftIO Prelude.getChar
+
+putChar :: MonadIO m => Char -> m ()
+putChar = liftIO . Prelude.putChar
+
+-- | The 'readLn' function combines 'getLine' and 'readIO'.
+readLn :: (MonadIO m, Read a) => m a
+readLn = liftIO Prelude.readLn
