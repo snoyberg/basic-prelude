@@ -1,3 +1,10 @@
+## 0.7.0
+
+* Export applicative version of Foldable and Traversable functions [#72](https://github.com/snoyberg/basic-prelude/issues/72)
+* Generalize all IO functions to MonadIO [#75](https://github.com/snoyberg/basic-prelude/issues/75)
+* Use `foldl1` for `maximumBy` and `minimumBy` [#74](https://github.com/snoyberg/basic-prelude/issues/74)
+* Remove nonexistent `foldr'` from `Data.List` hiding list
+
 ## 0.6.1.1
 
 * Add `HasCallStack` for `terror`
