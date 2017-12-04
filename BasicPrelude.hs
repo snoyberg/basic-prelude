@@ -154,7 +154,7 @@ import qualified Data.Text.Lazy.IO as LText
 import qualified Prelude
 import Data.Text.Encoding (encodeUtf8, decodeUtf8With)
 import Data.Text.Encoding.Error (lenientDecode)
-import qualified Safe
+import qualified Text.Read
 
 #if MIN_VERSION_base(4,10,0)
 import Data.Foldable (maximumBy, minimumBy)
@@ -298,7 +298,7 @@ interact :: MonadIO m => (LText -> LText) -> m ()
 interact = liftIO . LText.interact
 
 readMay :: Read a => Text -> Maybe a
-readMay = Safe.readMay . Text.unpack
+readMay = Text.Read.readMaybe . Text.unpack
 
 -- |
 -- @since 0.7.0
