@@ -224,21 +224,29 @@ read = Prelude.read . Text.unpack
 -- | The readIO function is similar to read
 -- except that it signals parse failure to the IO monad
 -- instead of terminating the program.
+--
+-- @since 0.7.0
 readIO :: (MonadIO m, Read a) => Text -> m a
 readIO = liftIO . Prelude.readIO . Text.unpack
 
 
 -- | Read a file and return the contents of the file as Text.
 -- The entire file is read strictly.
+--
+-- @since 0.7.0
 readFile :: MonadIO m => FilePath -> m Text
 readFile = liftIO . Text.readFile
 
 -- | Write Text to a file.
 -- The file is truncated to zero length before writing begins.
+--
+-- @since 0.7.0
 writeFile :: MonadIO m => FilePath -> Text -> m ()
 writeFile p = liftIO . Text.writeFile p
 
 -- | Write Text to the end of a file.
+--
+-- @since 0.7.0
 appendFile :: MonadIO m => FilePath -> Text -> m ()
 appendFile p = liftIO . Text.appendFile p
 
@@ -274,24 +282,36 @@ fpToString = id
 decodeUtf8 :: ByteString -> Text
 decodeUtf8 = decodeUtf8With lenientDecode
 
+-- |
+-- @since 0.7.0
 getLine :: MonadIO m => m Text
 getLine = liftIO Text.getLine
 
+-- |
+-- @since 0.7.0
 getContents :: MonadIO m => m LText
 getContents = liftIO LText.getContents
 
+-- |
+-- @since 0.7.0
 interact :: MonadIO m => (LText -> LText) -> m ()
 interact = liftIO . LText.interact
 
 readMay :: Read a => Text -> Maybe a
 readMay = Safe.readMay . Text.unpack
 
+-- |
+-- @since 0.7.0
 getChar :: MonadIO m => m Char
 getChar = liftIO Prelude.getChar
 
+-- |
+-- @since 0.7.0
 putChar :: MonadIO m => Char -> m ()
 putChar = liftIO . Prelude.putChar
 
 -- | The 'readLn' function combines 'getLine' and 'readIO'.
+--
+-- @since 0.7.0
 readLn :: (MonadIO m, Read a) => m a
 readLn = liftIO Prelude.readLn
