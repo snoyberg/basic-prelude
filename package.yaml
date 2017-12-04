@@ -25,6 +25,4 @@ dependencies:
 - filepath
 
 library:
-  exposed-modules:
-  - BasicPrelude
-  - CorePrelude
+  source-dirs: src
