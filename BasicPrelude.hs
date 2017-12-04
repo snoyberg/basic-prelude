@@ -1,4 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE CPP #-}
 
 -- | BasicPrelude mostly re-exports
 -- several key libraries in their entirety.
@@ -28,6 +29,11 @@ module BasicPrelude
   , elem
   , maximum
   , minimum
+  , traverse_
+  , sequenceA_
+  , for_
+  , maximumBy
+  , minimumBy
   , Traversable
     (
       traverse
@@ -35,6 +41,7 @@ module BasicPrelude
     , mapM
     , sequence
     )
+  , for
 
     -- * Enhanced exports
     -- ** Simpler name for a typeclassed operation
@@ -70,9 +77,9 @@ module BasicPrelude
   , encodeUtf8
   , decodeUtf8
     -- ** Text operations (IO)
-  , Text.getLine
-  , LText.getContents
-  , LText.interact
+  , getLine
+  , getContents
+  , interact
 
     -- * Miscellaneous prelude re-exports
     -- ** Math
@@ -93,9 +100,9 @@ module BasicPrelude
   , Prelude.lex
   , readMay
     -- ** IO operations
-  , Prelude.putChar
-  , Prelude.getChar
-  , Prelude.readLn
+  , getChar
+  , putChar
+  , readLn
   ) where
 
 import CorePrelude
@@ -121,10 +128,11 @@ import Data.List hiding
   , foldl'
   , foldl1
   , foldr
-  , foldr'
   , foldr1
   , maximum
   , minimum
+  , maximumBy
+  , minimumBy
   )
 
 -- Import *all of the things* from Control.Monad,
@@ -137,8 +145,8 @@ import Control.Monad hiding
   )
 
 
-import Data.Foldable (Foldable(..), elem, maximum, minimum)
-import Data.Traversable (Traversable(..))
+import Data.Foldable (Foldable(..), elem, maximum, minimum, traverse_, sequenceA_, for_)
+import Data.Traversable (Traversable(..), for)
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import qualified Data.Text.Lazy as LText
@@ -147,6 +155,22 @@ import qualified Prelude
 import Data.Text.Encoding (encodeUtf8, decodeUtf8With)
 import Data.Text.Encoding.Error (lenientDecode)
 import qualified Safe
+
+#if MIN_VERSION_base(4,10,0)
+import Data.Foldable (maximumBy, minimumBy)
+#else
+maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+maximumBy cmp = foldl1 max'
+  where max' x y = case cmp x y of
+                     GT -> x
+                     _  -> y
+
+minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+minimumBy cmp = foldl1 min'
+  where min' x y = case cmp x y of
+                     GT -> y
+                     _  -> x
+#endif
 
 -- | > map = fmap
 map :: (Functor f) => (a -> b) -> f a -> f b
@@ -200,23 +224,31 @@ read = Prelude.read . Text.unpack
 -- | The readIO function is similar to read
 -- except that it signals parse failure to the IO monad
 -- instead of terminating the program.
-readIO :: Read a => Text -> IO a
-readIO = Prelude.readIO . Text.unpack
+--
+-- @since 0.7.0
+readIO :: (MonadIO m, Read a) => Text -> m a
+readIO = liftIO . Prelude.readIO . Text.unpack
 
 
 -- | Read a file and return the contents of the file as Text.
 -- The entire file is read strictly.
-readFile :: FilePath -> IO Text
-readFile = Text.readFile
+--
+-- @since 0.7.0
+readFile :: MonadIO m => FilePath -> m Text
+readFile = liftIO . Text.readFile
 
 -- | Write Text to a file.
 -- The file is truncated to zero length before writing begins.
-writeFile :: FilePath -> Text -> IO ()
-writeFile = Text.writeFile
+--
+-- @since 0.7.0
+writeFile :: MonadIO m => FilePath -> Text -> m ()
+writeFile p = liftIO . Text.writeFile p
 
 -- | Write Text to the end of a file.
-appendFile :: FilePath -> Text -> IO ()
-appendFile = Text.appendFile
+--
+-- @since 0.7.0
+appendFile :: MonadIO m => FilePath -> Text -> m ()
+appendFile p = liftIO . Text.appendFile p
 
 textToString :: Text -> Prelude.String
 textToString = Text.unpack
@@ -250,5 +282,36 @@ fpToString = id
 decodeUtf8 :: ByteString -> Text
 decodeUtf8 = decodeUtf8With lenientDecode
 
+-- |
+-- @since 0.7.0
+getLine :: MonadIO m => m Text
+getLine = liftIO Text.getLine
+
+-- |
+-- @since 0.7.0
+getContents :: MonadIO m => m LText
+getContents = liftIO LText.getContents
+
+-- |
+-- @since 0.7.0
+interact :: MonadIO m => (LText -> LText) -> m ()
+interact = liftIO . LText.interact
+
 readMay :: Read a => Text -> Maybe a
 readMay = Safe.readMay . Text.unpack
+
+-- |
+-- @since 0.7.0
+getChar :: MonadIO m => m Char
+getChar = liftIO Prelude.getChar
+
+-- |
+-- @since 0.7.0
+putChar :: MonadIO m => Char -> m ()
+putChar = liftIO . Prelude.putChar
+
+-- | The 'readLn' function combines 'getLine' and 'readIO'.
+--
+-- @since 0.7.0
+readLn :: (MonadIO m, Read a) => m a
+readLn = liftIO Prelude.readLn
