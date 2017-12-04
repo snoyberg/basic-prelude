@@ -170,8 +170,6 @@ module CorePrelude
       -- ** Hashing
     , hash
     , hashWithSalt
-      -- ** Command line args
-    , readArgs
     ) where
 
 import qualified Prelude
@@ -222,7 +220,6 @@ import Data.IntSet (IntSet)
 import Data.Sequence (Seq)
 import Data.HashMap.Strict (HashMap)
 import Data.HashSet (HashSet)
-import qualified ReadArgs
 import qualified System.FilePath as F
 
 import qualified System.Environment
@@ -278,9 +275,6 @@ putStrLn = liftIO . Data.Text.IO.putStrLn
 
 print :: (MonadIO m, Prelude.Show a) => a -> m ()
 print = liftIO . Prelude.print
-
-readArgs :: (MonadIO m, ReadArgs.ArgumentTuple a) => m a
-readArgs = liftIO ReadArgs.readArgs
 
 -- | @error@ applied to @Text@
 --
