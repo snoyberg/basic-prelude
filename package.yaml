@@ -1,0 +1,32 @@
+name:        basic-prelude
+version:     0.7.0
+synopsis:    An enhanced core prelude; a common foundation for alternate preludes.
+description: Please see the README on Github at <https://github.com/snoyberg/basic-prelude#readme>
+category:    Control, Prelude
+author:      Michael Snoyman, Dan Burton
+maintainer:  michael@snoyman.com
+license:     MIT
+github:      snoyberg/basic-prelude
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+dependencies:
+- base >=4.6 && <5
+- hashable
+- bytestring
+- text
+- transformers
+- containers
+- unordered-containers
+- vector
+- ReadArgs >=1.2 && <1.3
+- lifted-base
+- safe
+- filepath
+
+library:
+  exposed-modules:
+  - BasicPrelude
+  - CorePrelude

@@ -5,3 +5,7 @@ cabal-dev
 *.chi
 *.chs.h
 *.swp
+*~
+/basic-prelude.cabal
+/.stack-work/
+/tarballs/
