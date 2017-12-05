@@ -21,7 +21,6 @@ dependencies:
 - containers
 - unordered-containers
 - vector
-- lifted-base
 - filepath
 
 library:

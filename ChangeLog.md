@@ -4,6 +4,13 @@
 * Generalize all IO functions to MonadIO [#75](https://github.com/snoyberg/basic-prelude/issues/75)
 * Use `foldl1` for `maximumBy` and `minimumBy` [#74](https://github.com/snoyberg/basic-prelude/issues/74)
 * Remove nonexistent `foldr'` from `Data.List` hiding list
+* Remove the `lifted-base` dependency. This means that `CorePrelude`
+  and `BasicPrelude` no longer expose any exception handling
+  functions. This is intentional: the new recommendations from this
+  library are to use an async-exception-aware exception handling
+  library, either
+  [safe-exceptions](https://haskell-lang.org/library/safe-exceptions)
+  or [unliftio](https://www.stackage.org/package/unliftio).
 
 ## 0.6.1.1
 
